@@ -1,0 +1,140 @@
+<-DOCTYPE html>
+<html lang="es">
+  <head>
+    <script src="https://aframe.io/releases/1.0.1/aframe.min.js"></script>
+	<script src="js/aframe-ar.min.js"></script>
+	<title>Ciència i coneixement </title>
+	<meta charset="UTF-8"/>
+	<meta name="title" content="ciència i coneixement"/>
+	<meta name="description" content="El territori des de l'espai"/>
+	<meta name="author" content="Antonio López García"/>
+	<meta name="keywords" content="augmented reality, space, science, 3D, realidad aumentada, satellite, mapping, cartografia, satelite "/>
+	<link rel="shortcut icon" href="favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#e9b938">  
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+     <!--position ="x z y"-->
+    <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">
+        <a-assets>
+		   <!-- 01 Video ploma de Ebre -->		   
+		   <a-video id="plomaEbre" source src="video/plomaDeEbre.mp4" type="video/mp4" preload="auto" ></a-video>
+		   <!--02 3D model decaiment-->
+           <a-asset-item id="sentinelDeca-obj" src="models/sentinelDeca.obj"></a-asset-item>
+           <a-asset-item id="sentinelDeca-mtl" src="models/sentinelDeca.mtl"></a-asset-item>
+           <a-mixin id="propertiesSD" scale=".2 .2 .2" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		   <!--03 3D model foc sentinel-->
+		   <a-asset-item id="focSentinel-obj" src="models/focSentinel.obj"></a-asset-item>
+           <a-asset-item id="focSentinel-mtl" src="models/focSentinel.mtl"></a-asset-item>
+           <a-mixin id="propertiesFS" scale=".1 .1 .1" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		   <!--04 3D model moviments sòl-->
+		   <a-asset-item id="saldes-obj" src="models/interferometria.obj"></a-asset-item>
+           <a-asset-item id="saldes-mtl" src="models/interferometria.mtl"></a-asset-item>
+           <a-mixin id="propertiesSal" scale=".1 .1 .1" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		   <!--05 3D model evolucio multitemporal-->
+		   <a-asset-item id="deltaMulti-obj" src="models/deltaMulti_02.obj"></a-asset-item>
+           <a-asset-item id="deltaMulti-mtl" src="models/deltaMulti_02.mtl"></a-asset-item>
+           <a-mixin id="propertiesMul" scale=".1 .1 .1" position ="0 0 0" rotation="0 0 0"></a-mixin>
+           <!--06 3D model humitat del sòl-->
+		   <a-asset-item id="humitat-obj" src="models/humitat_01.obj"></a-asset-item>
+           <a-asset-item id="humitat-mtl" src="models/humitat_01.mtl"></a-asset-item>
+           <a-mixin id="propertiesHu" scale=".1 .1 .1" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		   <!--07 3D model badalona termosolar-->
+		   <a-asset-item id="badalona-obj" src="models/badalona.obj"></a-asset-item>
+           <a-asset-item id="badalona-mtl" src="models/badalona.mtl"></a-asset-item>
+           <a-mixin id="propertiesB" scale=".4 .4 .4" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		   <!--08 3D model contaminació luminica-->
+           <a-asset-item id="llum-obj" src="models/Llum_01.obj"></a-asset-item>
+           <a-asset-item id="llum-mtl" src="models/Llum_01.mtl"></a-asset-item>
+           <a-mixin id="propertiesLlum" scale=".4 .4 .4" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		   <!--09 3D model illa de calor-->
+		   <a-asset-item id="illaC-obj" src="models/illaC_01.obj"></a-asset-item>
+           <a-asset-item id="illaC-mtl" src="models/illaC_01.mtl"></a-asset-item>
+           <a-mixin id="propertiesIllaC" scale=".4 .4 .4" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		    <!--10 3D model barcelona_3d-->
+		   <a-asset-item id="barcelona-obj" src="models/barcelona_3D_014.obj"></a-asset-item>
+           <a-asset-item id="barcelona-mtl" src="models/barcelona_3D_014.mtl"></a-asset-item>
+           <a-mixin id="propertiesCity_3D" scale=".25 .25 .25" position ="0 -0.5 0" rotation="0 0 0"></a-mixin>
+		   <!--11 3D model futur Agrari -->
+		   <a-asset-item id="futurAgra-obj" src="models/futurAgra_03.obj"></a-asset-item>
+           <a-asset-item id="futurAgra-mtl" src="models/futurAgra_03.mtl"></a-asset-item>
+           <a-mixin id="propertiesAgra" scale=".4 .4 .4" position ="0 0 0" rotation="0 0 0"></a-mixin>
+		   <!--12 3D model Variables biofisiques-->
+		   <a-asset-item id="variablesBio-obj" src="models/variablesBio_02.obj"></a-asset-item>
+           <a-asset-item id="variablesBio-mtl" src="models/variablesBio_02.mtl"></a-asset-item>
+           <a-mixin id="propertiesVariaBio" scale=".4 .4 .4" position ="0 0 0" rotation="0 0 0"></a-mixin>
+           <!--13 3D model Verd urba-->
+           <a-asset-item id="verdUrba-obj" src="models/verdUrba_01.obj"></a-asset-item>
+           <a-asset-item id="verdUrba-mtl" src="models/verdUrba_01.mtl"></a-asset-item>
+           <a-mixin id="propertiesVerdU" scale=".2 .2 .2" position ="0 -0.5 0" rotation="0 0 0"></a-mixin>
+		   <!--14 Video comparador litoral-->	   
+		   <a-video id="comparadorLitoral" source src="video/ecosistemaLitoral.mp4" type="video/mp4" preload="auto" ></a-video>
+        </a-assets>
+        <!--01 Video ploma de Ebre-->
+        <a-marker type="pattern" preset="custom" url="data/pattern-markerPlomaEbre.patt">
+  		   <a-entity geometry="primitive: plane" scale="6 4 1" position="0 0 0" rotation="-90 0 0" material="src: #plomaEbre"></a-entity>
+		</a-marker>
+		<!--02 3D model decaiment-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerDe.patt">
+  		   <a-entity mixin="propertiesSD" obj-model="obj: #sentinelDeca-obj; mtl: #sentinelDeca-mtl "></a-entity>
+		</a-marker>
+		<!--03 3D model foc sentinel-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerFoc.patt">
+  		   <a-entity mixin="propertiesFS" obj-model="obj: #focSentinel-obj; mtl: #focSentinel-mtl "></a-entity>
+		</a-marker>
+		<!--04 3D model moviments sòl-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerInterfe.patt">
+  		   <a-entity mixin="propertiesSal" obj-model="obj: #saldes-obj; mtl: #saldes-mtl "></a-entity>
+		</a-marker>
+		<!--05 3D model evolucio multitemporal-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerSar.patt">
+  		   <a-entity mixin="propertiesMul" obj-model="obj: #deltaMulti-obj; mtl: #deltaMulti-mtl "></a-entity>
+		</a-marker>
+		<!--06 3D model humitat del sòl-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerHumi.patt">
+  		   <a-entity mixin="propertiesHu" obj-model="obj: #humitat-obj; mtl: #humitat-mtl "></a-entity>
+		</a-marker>
+		<!--07 3D model badalona termosolar-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerBadalonaTer.patt">
+  		   <a-entity mixin="propertiesB" obj-model="obj: #badalona-obj; mtl: #badalona-mtl "></a-entity>
+		</a-marker>
+		<!--08 3D model contaminació luminica-->
+        <a-marker type="pattern" preset="custom" url="data/pattern-markerLlumC.patt">
+  		   <a-entity mixin="propertiesLlum" obj-model="obj: #llum-obj; mtl: #llum-mtl "></a-entity>
+		</a-marker>
+		<!--09 3D model illa de calor-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerIllaCaUr.patt">
+  		   <a-entity mixin="propertiesIllaC" obj-model="obj: #illaC-obj; mtl: #illaC-mtl "></a-entity>
+		</a-marker>
+		<!--10 3D model barcelona_3d -->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerCity_3D.patt">
+  		   <a-entity mixin="propertiesCity_3D" obj-model="obj: #barcelona-obj; mtl: #barcelona-mtl "></a-entity>
+		</a-marker>
+		<!--11 3D model futur Agrari-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerFuAgra.patt">
+  		   <a-entity mixin="propertiesAgra" obj-model="obj: #futurAgra-obj; mtl: #futurAgra-mtl "></a-entity>
+		</a-marker>
+		<!--12 3D model Variables biofisiques-->
+		<a-marker type="pattern" preset="custom" url="data/pattern-markerVariBioFisi.patt">
+		   <a-entity mixin="propertiesVariaBio" obj-model="obj: #variablesBio-obj; mtl: #variablesBio-mtl "></a-entity>
+		</a-marker>
+        <!--13 3D model Verd urba-->
+        <a-marker type="pattern" preset="custom" url="data/pattern-markerVUrba.patt">
+  		   <a-entity mixin="propertiesVerdU" obj-model="obj: #verdUrba-obj; mtl: #verdUrba-mtl "></a-entity>
+		</a-marker>
+        <!--14 Video comparador litoral-->
+        <a-marker type="pattern" preset="custom" url="data/pattern-markerLiroralCat.patt">
+  		   <a-entity geometry="primitive: plane" scale="6 4 1" position="0 0 0" rotation="-90 0 0" material="src: #comparadorLitoral"></a-entity>
+		</a-marker>
+  	    <a-entity camera></a-entity>
+	</a-scene>
+
+</body>
+</html>
